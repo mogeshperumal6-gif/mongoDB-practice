@@ -1,0 +1,10 @@
+use libraryDB
+db.books.insertMany([{ title: "Wings of Fire", author: "A.P.J. Abdul Kalam", category: "Biography", copies: 5, available: true }, { title: "Clean Code", author: "Robert C. Martin", category: "Programming", copies: 3, available: true }, { title: "Ponniyin Selvan", author: "Kalki Krishnamurthy", category: "Fiction", copies: 2, available: true }, { title: "Atomic Habits", author: "James Clear", category: "Self-Help", copies: 0, available: false }])
+db.books.find()
+db.books.find({ category: "Programming" })
+db.books.find({ available: true })
+db.books.find({ title: { $regex: "habits", $options: "i" } })
+db.books.find({ copies: { $gt: 1 } })
+db.books.updateOne({ title: "Clean Code" }, { $inc: { copies: -1 } })
+db.books.updateOne({ title: "Atomic Habits" }, { $inc: { copies: 1 }, $set: { available: true } })
+db.books.deleteOne({ title: "Ponniyin Selvan" })
